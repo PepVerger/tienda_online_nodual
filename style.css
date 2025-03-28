@@ -1,0 +1,44 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
+
+body {
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #ddd;
+}
+.menu-icon {
+    font-size: 32px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.logo {
+
+    align-self: left;
+    flex-grow: 1;
+    margin-left: 40px;
+}
+.menu {
+    display: flex;
+    gap: 20px;
+}
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+.container {
+    text-align: center;
+    padding: 20px;
+}
+.image-container img {
+    width: 100%;
+    max-width: 900px;
+}

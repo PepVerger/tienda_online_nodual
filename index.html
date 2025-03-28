@@ -3,10 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <title>Tienda Online</title>
+    <link href="dist/hamburgers.css" rel="stylesheet">
+    <title>ZARA</title>
 </head>
 <body>
-    
+    <header class="header">
+        <div class="menu-icon">
+
+            <button class="hamburger hamburger--slider" type="button">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
+        </div>
+        <div class="logo"><a href=""><img src="img/logo_zara.svg" alt=""></a></div>
+        <nav class="menu">
+            <a href="#">BUSCAR</a>
+            <a href="#">INICIAR SESIÓN</a>
+            <a href="#">AYUDA</a>
+            <a href="#">CESTA[0]</a>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="image-container">
+            <img src="capzara.PNG" alt="ZARA Campaña">
+        </div>
+        <p>MIRAR AHORA</p>
+    </main>
+
+
 </body>
+<script>
+    // Look for .hamburger
+    var hamburger = document.querySelector(".hamburger");
+    // On click
+    hamburger.addEventListener("click", function() {
+      // Toggle class "is-active"
+      hamburger.classList.toggle("is-active");
+      // Do something else, like open/close menu
+    });
+  </script>
 </html>
