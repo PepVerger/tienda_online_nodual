@@ -11,17 +11,16 @@
 <body>
     <header class="header">
         <div class="menu-icon">
-
             <button class="hamburger hamburger--slider" type="button">
                 <span class="hamburger-box">
                   <span class="hamburger-inner"></span>
                 </span>
-              </button>
+            </button>
         </div>
         <div class="logo"><a href=""><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
-            <a href="#">INICIAR SESIÓN</a>
+            <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
             <a href="#">AYUDA</a>
             <a href="#">CESTA[0]</a>
         </nav>
@@ -33,16 +32,19 @@
         <p>MIRAR AHORA</p>
     </main>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
 </body>
 <script>
-    // Look for .hamburger
     var hamburger = document.querySelector(".hamburger");
-    // On click
     hamburger.addEventListener("click", function() {
-      // Toggle class "is-active"
       hamburger.classList.toggle("is-active");
-      // Do something else, like open/close menu
     });
-  </script>
+</script>
 </html>
