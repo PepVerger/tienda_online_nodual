@@ -25,6 +25,17 @@
             <a href="#">CESTA[0]</a>
         </nav>
     </header>
+
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
+
     <main class="container">
         <div class="image-container">
             <img src="" alt="ZARA Campaña">
@@ -43,8 +54,11 @@
 </body>
 <script>
     var hamburger = document.querySelector(".hamburger");
+    var menu = document.querySelector(".menu-left")
     hamburger.addEventListener("click", function() {
       hamburger.classList.toggle("is-active");
+      menu.classList.toggle("open")
+
     });
 </script>
 </html>
