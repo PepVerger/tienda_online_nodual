@@ -69,6 +69,10 @@ def logout():
     flash('Has cerrado sesión.', 'info')
     return redirect(url_for('index'))
 
+@app.route("/cesta")
+def cesta():
+    return render_template('cesta.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
