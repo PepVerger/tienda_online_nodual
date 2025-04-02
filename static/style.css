@@ -5,7 +5,14 @@ body {
     font-weight: 300;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
+
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -41,4 +48,45 @@ body {
 .image-container img {
     width: 100%;
     max-width: 900px;
+}
+
+.menu-left{
+    font-weight: 500;
+    font-family: "Helvetica Neue";
+    visibility: none;
+    width: 30vw;
+    height: 100vh;
+    display: block;
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    left: 0;
+    opacity: 0;
+    padding: 5px;
+    transition: 0.6s;
+    transform: translateX(-2vw);
+}
+
+.menu-left.open{
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.menu-left.inside{
+    display: flex;
+
+}
+
+ul.menu-list{
+    font-size: 0.9rem;
+    font-family: "Helvetica Neue";
+    list-style: none;
+    font-weight: 300;
+    display: flex;
+    margin-top: 50px;
+}
+
+.menu-list>li{
+    margin-right: 25px;
+    color: rgb(45, 45, 45);
 }
