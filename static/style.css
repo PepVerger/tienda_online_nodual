@@ -56,7 +56,7 @@ a{
     visibility: none;
     width: 30vw;
     height: 100vh;
-    display: block;
+    display: none;
     background-color: rgb(255, 255, 255);
     position: sticky;
     left: 0;

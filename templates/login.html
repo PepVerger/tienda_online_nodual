@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../static/iniciar.css">
+    
+    
+    <link rel="stylesheet" href="../static/style.css">
     <link href="../static/dist/hamburgers.css" rel="stylesheet">
     <title>ZARA</title>
 </head>
@@ -20,10 +22,21 @@
         <div class="logo"><a href=""><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
+            <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
             <a href="#">AYUDA</a>
             <a href="#">CESTA[0]</a>
         </nav>
     </header>
+
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
     
     <main class="content">
         <section class="info">
@@ -37,4 +50,14 @@
         </section>
     </main>
 </body>
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    var menu = document.querySelector(".menu-left")
+    hamburger.addEventListener("click", function() {
+      hamburger.classList.toggle("is-active");
+      menu.classList.toggle("open")
+
+    });
+</script>
+
 </html>
