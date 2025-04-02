@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Iniciar Sesión</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../static/iniciar.css">
+    <link href="../static/dist/hamburgers.css" rel="stylesheet">
+    <title>ZARA</title>
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    <form method="POST">
-        <input type="email" name="email" placeholder="Correo" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Ingresar</button>
-    </form>
-    <a href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
+    <header class="header">
+        <div class="menu-icon">
+            <button class="hamburger hamburger--slider" type="button">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <div class="logo"><a href=""><img src="../static/img/logo_zara.svg" alt=""></a></div>
+        <nav class="menu">
+            <a href="#">BUSCAR</a>
+            <a href="#">AYUDA</a>
+            <a href="#">CESTA[0]</a>
+        </nav>
+    </header>
+    
+    <main class="content">
+        <section class="info">
+            <h2>EXHIBITION DE EXPERIENCIA</h2>
+            <p>Idícate a disfrutar de una experiencia personalizada y acceder a todos nuestros servicios.</p>
+            <button class="black-btn">INICIAR SESION</button>
+            <button class="white-btn">REGISTRAR</button>
+        </section>
+        <section class="image-gallery">
+            <img src="static/img/img iniciozara.jpg" alt="Fashion Model">
+        </section>
+    </main>
 </body>
 </html>
