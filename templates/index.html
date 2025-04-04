@@ -17,7 +17,7 @@
                 </span>
             </button>
         </div>
-        <div class="logo"><a href=""><img src="../static/img/logo_zara.svg" alt=""></a></div>
+        <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
             <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
@@ -41,6 +41,7 @@
             <img src="" alt="ZARA Campaña">
         </div>
         <p>MIRAR AHORA</p>
+        
     </main>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
