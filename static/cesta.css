@@ -1,2 +1,93 @@
+/* Reset básico */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: black;
+}
 
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: none;
+}
+
+
+/* Barra de búsqueda */
+.search-bar {
+    border-bottom: 1px solid black;
+    margin-left: auto;
+    margin-right: 150px; 
+}
+
+.search-bar input {
+    border: none;
+    font-size: 14px;
+    padding: 5px;
+    outline: none;
+}
+
+/* Menú de opciones */
+.menu-options {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: none;
+    font-size: 16px;
+}
+
+.menu-options span {
+    margin-right: 20px;
+}
+
+.menu-options b {
+    font-weight: bold;
+}
+
+/* Contenedor principal */
+.container {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+.message {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.info {
+    font-size: 14px;
+    color: grey;
+}
+
+
+.tab-content {
+    display: none; /* Oculta ambas secciones por defecto */
+}
+
+#cesta:target, #favoritos:target {
+    display: block; /* Muestra solo la que está en la URL */
+}
+
+/* Para que por defecto se vea la CESTA */
+.container:not(:target) #cesta {
+    display: block;
+}
+
+/* Estilos de las pestañas */
+.menu-options a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px; /* Letras más pequeñas */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.menu-options a:hover, .menu-options a:target {
+    font-weight: bold;
+    text-decoration: underline;
+}
 

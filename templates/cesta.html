@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/cesta.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/cesta.css">
+    <link href="../static/dist/hamburgers.css" rel="stylesheet">
     <title>Cesta- ZARA</title>
 </head>
 <body>
@@ -27,15 +29,44 @@
         </div>
     </header>
 
-    <nav class="menu-options">
-        <span><b>CESTA</b></span>
-        <span>FAVORITOS</span>
-    </nav>
+    <!-- -------------------------------------------------------
+    ------------------------------------------------------- -->
+    
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
 
+    <nav class="menu-options">
+        <a href="#cesta" class="tab active">CESTA</a>
+        <a href="#favoritos" class="tab">FAVORITOS</a>
+    </nav>
+    
     <main class="container">
-        <div class="message">TU CESTA ESTÁ VACÍA</div>
-        <div class="info">Los artículos que añadas se mostrarán aquí</div>
+        <div id="cesta" class="tab-content">
+            <div class="message">TU CESTA ESTÁ VACÍA</div>
+            <div class="info">Los artículos que añadas se mostrarán aquí</div>
+        </div>
+    
+        <div id="favoritos" class="tab-content">
+            <div class="message">NO HAY FAVORITOS</div>
+            <div class="info">Los artículos que marques como favoritos aparecerán aquí</div>
+        </div>
     </main>
 
 </body>
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    var menu = document.querySelector(".menu-left")
+    hamburger.addEventListener("click", function() {
+      hamburger.classList.toggle("is-active");
+      menu.classList.toggle("open")
+
+    });
+</script>
 </html>
