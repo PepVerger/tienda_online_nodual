@@ -5,22 +5,22 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'tu_clave_secreta'
+app.config['SECRET_KEY'] = '1234'
 
 db = SQLAlchemy(app)
 
-# Modelo de Usuario
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(256), nullable=False)
 
-# Ruta principal (index)
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Ruta de registro
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -38,7 +38,7 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-# Ruta de inicio de sesión
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -54,7 +54,7 @@ def login():
             flash('Correo o contraseña incorrectos', 'danger')
     return render_template('login.html')
 
-# Ruta de dashboard (requiere sesión iniciada)
+
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
@@ -62,7 +62,7 @@ def dashboard():
         return redirect(url_for('login'))
     return 'Bienvenido al panel de usuario.'
 
-# Ruta de cierre de sesión
+
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
