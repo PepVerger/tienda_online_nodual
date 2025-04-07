@@ -69,6 +69,20 @@ a{
     flex-grow: 1;
     margin-left: 40px;
 }
+
+.video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.video video {
+    width: 100vw; /* Ocupa todo el ancho */
+    max-height: 100vh;
+    object-fit: cover; 
+}
+
 .menu {
     display: flex;
     gap: 20px;
