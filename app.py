@@ -20,6 +20,10 @@ class User(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/login-select')
+def loginselect():
+    return render_template('login-select.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

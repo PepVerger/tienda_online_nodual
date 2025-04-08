@@ -46,7 +46,7 @@ a{
     
 }
 .menu-icon {
-    font-size: 32px;
+
     cursor: pointer;
     font-weight: bold;
     margin-right: 20px;
@@ -54,6 +54,7 @@ a{
 
 .menu>a{
     transition: 0.15s;
+
     
 }
 
@@ -63,8 +64,8 @@ a{
     
 }
 
-.logo {
-
+.logo { 
+    
     align-self: left;
     flex-grow: 1;
     margin-left: 40px;
@@ -74,13 +75,18 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    pointer-events: none;
+
+    width: 100%;
+
+
 }
 
 .video video {
-    width: 100vw; /* Ocupa todo el ancho */
-    max-height: 100vh;
-    object-fit: cover; 
+
+    width: 70%;
+    
+
 }
 
 .menu {
@@ -90,14 +96,11 @@ a{
 .menu a {
     text-decoration: none;
     color: black;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 200;
     letter-spacing: 1px;
 }
-.container {
-    text-align: center;
-    padding: 20px;
-}
+
 .image-container img {
     width: 100%;
     max-width: 900px;
@@ -106,7 +109,6 @@ a{
 .menu-left{
     font-weight: 500;
     font-family: "Helvetica Neue";
-
     width: 30vw;
     height: 100vh;
     display: block;
@@ -151,3 +153,20 @@ ul.menu-list{
     color: rgb(45, 45, 45);
 }
 
+
+
+.container {
+
+    text-align: center;
+    padding: 20px;
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-inline: 150px;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 250;
+    letter-spacing: 0.7px;
+}
