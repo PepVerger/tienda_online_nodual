@@ -9,6 +9,16 @@
     <title>ZARA</title>
 </head>
 <body>
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
+
     <header class="header">
         <div class="menu-icon">
             <button class="hamburger hamburger--slider" type="button">
@@ -20,7 +30,13 @@
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
-            <a href="{{ url_for('loginselect') }}">INICIAR SESIÓN</a>
+            {% if session.user_id %}
+                <a href="{{ url_for('cuenta') }}">CUENTA</a>
+            {% else %}
+                <a href="{{ url_for('loginselect') }}">INICIAR SESIÓN</a>
+            {% endif %}
+
+            
             <a href="#">AYUDA</a>
             <a href="{{ url_for('cesta') }}">CESTA[0]</a>
         </nav>
@@ -28,16 +44,7 @@
 
     
 
-    <div class="menu-left">
-        <div class="menu-left-inside">
-            <ul class="menu-list">
-                <li><a href="">MUJER</a></li>
-                <li><a href="">HOMBRE</a></li>
-                <li><a href="">NIÑOS</a></li>
-            </ul>
-        </div>
-    </div>
-
+    
     <main class="content">
         <div class="video">
             <video src="../static/img/video_inicio.mp4" autoplay muted loop playsinline></video>

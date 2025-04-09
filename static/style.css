@@ -117,6 +117,7 @@ a{
     position: fixed;
     
     padding: 5px;
+    padding-top: 120px;
     transition: 0.6s;
     transform: translateX(-2vw);
     pointer-events: none;
@@ -169,4 +170,10 @@ ul.menu-list{
     font-size: 0.9rem;
     font-weight: 250;
     letter-spacing: 0.7px;
+}
+
+
+.hamburger:hover{
+    transform: scale(1.05);
+
 }

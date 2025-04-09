@@ -20,6 +20,10 @@ class User(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/cuenta')
+def cuenta():
+    return render_template('cuenta.html')
+
 @app.route('/login-select')
 def loginselect():
     return render_template('login-select.html')
@@ -38,7 +42,10 @@ def register():
             new_user = User(email=email, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
+            
+
             flash('Registro exitoso.', 'success')
+            
             return redirect(url_for('login'))
     return render_template('register.html')
 
@@ -52,8 +59,9 @@ def login():
 
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
+            session['user_email'] = user.email
             flash('Inicio de sesión exitoso', 'success')
-            return redirect(url_for('dashboard'))
+            return redirect(url_for('index'))
         else:
             flash('Correo o contraseña incorrectos', 'danger')
     return render_template('login.html')
@@ -64,6 +72,7 @@ def dashboard():
     if 'user_id' not in session:
         flash('Debes iniciar sesión primero.', 'warning')
         return redirect(url_for('login'))
+
     return 'Bienvenido al panel de usuario.'
 
 
@@ -79,5 +88,6 @@ def cesta():
 
 if __name__ == '__main__':
     with app.app_context():
+        db.drop_all()
         db.create_all()
     app.run(debug=True)

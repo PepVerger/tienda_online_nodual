@@ -32,6 +32,8 @@ h2 {
 }
 
 .black-btn, .white-btn {
+    font-weight: 300;
+    font-family: "Helvetica Neue";
     display: block;
     width: 200px;
     padding: 10px;
@@ -44,11 +46,24 @@ h2 {
 .black-btn {
     background-color: black;
     color: white;
+    transition: 0.2s;
+}
+
+.black-btn:hover{
+    transform: scale(1.01);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
 }
 
 .white-btn {
     background-color: white;
     color: black;
+    transition: 0.2s;
+}
+
+.white-btn:hover{
+
+    transform: scale(1.01);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
 }
 
 .info{
@@ -63,4 +78,17 @@ h2 {
 
 .imagen-login>img{
     width: 55vw;
+}
+
+.content {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-inline: 150px;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 250;
+    letter-spacing: 0.7px;
 }
