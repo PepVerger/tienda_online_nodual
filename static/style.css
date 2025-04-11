@@ -61,7 +61,8 @@ a{
 .menu>a:hover{
 
     text-shadow: 0px 0px 1px #000000;
-    
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }
 
 .logo { 
@@ -176,4 +177,9 @@ ul.menu-list{
 .hamburger:hover{
     transform: scale(1.05);
 
+}
+
+a.active{
+    text-decoration: underline;
+    text-underline-offset: 5px;
 }

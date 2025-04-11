@@ -5,18 +5,17 @@
     justify-content: center;
     height: 40vh;
     margin: auto;
-
     width: 100%;
     font-size: 0.9rem;
     font-weight: 250;
-    letter-spacing: 0.7px;
+    letter-spacing: 1px;
 }
 
 .details{
     width: 25%;
     border: 2px gray solid;
 
-    height: 20vh;
+    height: 25vh;
     padding: 25px;
     padding-top: 15px;
     box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.25);

@@ -24,6 +24,8 @@
 
 
 
+
+
 h2 {
     font-size: 1rem;
     letter-spacing: 1px;
@@ -51,7 +53,7 @@ h2 {
 
 .black-btn:hover{
     transform: scale(1.01);
-    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
 }
 
 .white-btn {
@@ -63,7 +65,7 @@ h2 {
 .white-btn:hover{
 
     transform: scale(1.01);
-    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
 }
 
 .info{
@@ -92,3 +94,8 @@ h2 {
     font-weight: 250;
     letter-spacing: 0.7px;
 }
+
+section{
+    width: fit-content;
+}
+

@@ -13,6 +13,7 @@ db = SQLAlchemy(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True, nullable=False)
+    name = db.Column(db.String(150), unique=True, nullable=False) 
     password = db.Column(db.String(256), nullable=False)
 
 
@@ -33,13 +34,14 @@ def loginselect():
 def register():
     if request.method == 'POST':
         email = request.form['email']
+        name = request.form['name']
         password = request.form['password']
         hashed_password = generate_password_hash(password)
 
         if User.query.filter_by(email=email).first():
             flash('El correo ya está registrado', 'danger')
         else:
-            new_user = User(email=email, password=hashed_password)
+            new_user = User(email=email, name=name, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
             
@@ -60,6 +62,7 @@ def login():
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
             session['user_email'] = user.email
+            session['user_name'] = user.name
             flash('Inicio de sesión exitoso', 'success')
             return redirect(url_for('index'))
         else:

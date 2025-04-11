@@ -31,7 +31,7 @@
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
-            <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
+            <a href="{{ url_for('loginselect') }}" class="active">INICIAR SESIÓN</a>
             <a href="#">AYUDA</a>
             <a href="{{ url_for('cesta') }}">CESTA[0]</a>
         </nav>
@@ -47,8 +47,9 @@
         <h2>Iniciar Sesión</h2>
         <form method="POST">
             <input type="email" name="email" placeholder="Correo" required>
+            
             <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Ingresar</button>
+            <button type="submit">Iniciar Sesión</button>
         </form>
         <a href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
 

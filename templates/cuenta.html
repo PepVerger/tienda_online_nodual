@@ -47,8 +47,9 @@
         
     <div class="content">
         <div class="details">
-            <h1>Tu cuenta</h1>
-            <h2>Correo: {{ session.user_email }}</h2>
+            <h1>TU CUENTA</h1>
+            <h2>CORREO: {{ session.user_email }}</h2>
+            <h2>NOMBRE: {{ session.user_name }}</h2>
             <a href="{{ url_for('logout') }}"><button class="white-btn">Cerrar Sesión</button></a>
         </div>
     </div>

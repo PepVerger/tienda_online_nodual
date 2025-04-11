@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
     <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="../static/iniciar.css">
+    <link rel="stylesheet" href="../static/loginselect.css">
     <link href="../static/dist/hamburgers.css" rel="stylesheet">
     <title>ZARA</title>
 </head>
@@ -30,7 +30,7 @@
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
-            <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
+            <a href="{{ url_for('loginselect') }}" class="active">INICIAR SESIÓN</a>
             <a href="#">AYUDA</a>
             <a href="{{ url_for('cesta') }}">CESTA[0]</a>
         </nav>
@@ -42,8 +42,11 @@
         <section class="info">
             <h2>DISFRUTA LA MEJOR EXPERIENCIA</h2>
             <p>Identifícate para disfrutar de una experiencia personalizada y acceder a todos nuestros servicios.</p>
-            <a href="{{ url_for('login') }}"><button class="black-btn">INICIAR SESIÓN</button></a>
-            <a href="{{ url_for('register') }}"><button class="white-btn">REGÍSTRATE</button></a>
+            <section>
+                <a href="{{ url_for('login') }}"><button class="black-btn">INICIAR SESIÓN</button></a>
+                <a href="{{ url_for('register') }}"><button class="white-btn">REGÍSTRATE</button></a>
+            </section>
+            
         </section>
         <section class="imagen-login">
             <img src="static/img/img iniciozara.jpg">
