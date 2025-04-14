@@ -25,7 +25,8 @@
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
-    border: 1px solid #000;
+    border: none;
+    border-bottom: 1px solid #000;
     text-align: center;
     outline: none;
     background-color: transparent;
