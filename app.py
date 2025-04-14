@@ -89,6 +89,10 @@ def logout():
 def cesta():
     return render_template('cesta.html')
 
+@app.route("/ayuda")
+def ayuda():
+    return render_template('ayuda.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.drop_all()
