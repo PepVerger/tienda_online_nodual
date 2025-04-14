@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/loginselect.css">
+    <link href="../static/dist/hamburgers.css" rel="stylesheet">
+    <title>ZARA</title>
+</head>
+<body>
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
+    <header class="header">
+        <div class="menu-icon">
+            <button class="hamburger hamburger--slider" type="button">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
+        <nav class="menu">
+            <a href="#">BUSCAR</a>
+            <a href="{{ url_for('loginselect') }}" class="active">INICIAR SESIÓN</a>
+            <a href="#">AYUDA</a>
+            <a href="{{ url_for('cesta') }}">CESTA[0]</a>
+        </nav>
+    </header>
+
+
+    
+    <main class="content">
+        <section class="info">
+            <h2>DISFRUTA LA MEJOR EXPERIENCIA</h2>
+            <p>Identifícate para disfrutar de una experiencia personalizada y acceder a todos nuestros servicios.</p>
+            <section>
+                <a href="{{ url_for('login') }}"><button class="black-btn">INICIAR SESIÓN</button></a>
+                <a href="{{ url_for('register') }}"><button class="white-btn">REGÍSTRATE</button></a>
+            </section>
+            
+        </section>
+        <section class="imagen-login">
+            <img src="static/img/img iniciozara.jpg">
+        </section>
+    </main>
+</body>
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    var menu = document.querySelector(".menu-left")
+    hamburger.addEventListener("click", function() {
+      hamburger.classList.toggle("is-active");
+      menu.classList.toggle("open")
+
+    });
+</script>
+
+</html>

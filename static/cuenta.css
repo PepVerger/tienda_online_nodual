@@ -1,0 +1,57 @@
+.content {
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    margin: auto;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 250;
+    letter-spacing: 1px;
+}
+
+.details{
+    width: 25%;
+    border: 2px gray solid;
+
+    height: 25vh;
+    padding: 25px;
+    padding-top: 15px;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.25);
+}
+
+h1{
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+h2{
+    font-family: "Helvetica Neue";
+    font-weight: 300;
+}
+
+.white-btn {
+    font-family: "Helvetica Neue";
+    background-color: white;
+    color: black;
+    transition: 0.2s;
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid black;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+
+.white-btn:hover{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    transform: scale(1.01);
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
+    
+
+}
