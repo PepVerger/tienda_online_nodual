@@ -26,15 +26,15 @@
         
         <div class="content">
             <div class="login-container">
-                <p class="login-title">Regístrate</p>
+                <p class="login-title">REGÍSTRATE</p>
                 <form method="POST">
                     <input type="email" name="email" placeholder="CORREO" required> <br>
                     <input type="text" name="name" placeholder="NOMBRE" required> <br>
                     <input type="password" name="password" placeholder="CONTRASEÑA" required> <br>
                     
-                    <button type="submit">Registrarse</button>
+                    <button class="white-btn" type="submit">Registrarse</button>
                 </form>
-                <a href="{{ url_for('login') }}">¿Ya tienes cuenta? Inicia sesión</a>
+                <a class="redirect" href="{{ url_for('login') }}">¿Ya tienes cuenta? Inicia sesión</a>
             
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
