@@ -146,6 +146,10 @@ def crear_producto():
     return render_template('crear_producto.html', categorias=categorias)
 
 
+@app.route("/ayuda")
+def ayuda():
+    return render_template('ayuda.html')
+
 if __name__ == '__main__':
     if not os.path.exists('static/imgs/'):
         os.makedirs('static/imgs/')
