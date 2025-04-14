@@ -1,0 +1,54 @@
+div.login-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-family: "Helvetica Neue";
+    padding-left: 11.5vw;
+}
+
+div.content{
+    display: flex;
+}
+div.img-login{
+    position: fixed;
+    margin-top: -20vh;
+    margin-left: 50vw;
+    height: 120vh;
+    width: 50vw;
+    background-image: url(../static/img/img_login.jpg);
+    background-size: cover;
+}
+
+.header{
+    margin-left: 6.5vw;
+}
+
+p.login-title{
+    letter-spacing: 1px;
+}
+
+input{
+    margin-top: 25px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding-bottom: 4px;
+    width: 300px;
+}
+
+button{
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+input::placeholder{
+    font-family: "Helvetica Neue";
+    font-weight: 250;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+
+}
+
+input:focus{
+    border-bottom: 1px solid black;
+}

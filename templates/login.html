@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
     <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="../static/iniciar.css">
+    <link rel="stylesheet" href="../static/login.css">
     <link href="../static/dist/hamburgers.css" rel="stylesheet">
     <title>ZARA</title>
 </head>
@@ -19,47 +19,48 @@
             </ul>
         </div>
     </div>
+    <div class="img-login">
+        
+    </div>
     
     <header class="header">
-        <div class="menu-icon">
-            <button class="hamburger hamburger--slider" type="button">
-                <span class="hamburger-box">
-                  <span class="hamburger-inner"></span>
-                </span>
-            </button>
-        </div>
+
+
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
-        <nav class="menu">
-            <a href="#">BUSCAR</a>
-            <a href="{{ url_for('loginselect') }}" class="active">INICIAR SESIÓN</a>
-            <a href="#">AYUDA</a>
-            <a href="{{ url_for('cesta') }}">CESTA[0]</a>
-        </nav>
+
     </header>
 
+    
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Iniciar Sesión</title>
-    </head>
-    <body>
-        <h2>Iniciar Sesión</h2>
-        <form method="POST">
-            <input type="email" name="email" placeholder="Correo" required>
-            
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-        <a href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
+        
+        <div class="content">
+            <div class="login-container">
+                <p class="login-title">INICIAR SESIÓN</p>
+                
+                <form method="POST">
+                    <input type="email" name="email" placeholder="CORREO" required> <br>
+                    
+                    <input type="password" name="password" placeholder="CONTRASEÑA" required> <br>
+                    <button type="submit">Iniciar Sesión</button> 
+                </form>
+                <a href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
+        
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <p class="{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>  
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <p class="{{ category }}">{{ message }}</p>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+           
+
+
+
+        </div>
+
+
 
 </body>
 <script>
