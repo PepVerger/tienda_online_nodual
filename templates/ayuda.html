@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/ayuda.css">
     <link rel="shortcut icon" href="img/logo_zara.svg" type="image/x-icon">
     <link rel="stylesheet" href="../static/style.css">
     <link href="../static/dist/hamburgers.css" rel="stylesheet">
-    <title>ZARA</title>
+
+    <title>AYUDA</title>
 </head>
 <body>
+
     <div class="menu-left">
         <div class="menu-left-inside">
             <ul class="menu-list">
@@ -42,25 +45,14 @@
         </nav>
     </header>
 
-    
-
-    
-    <main class="content">
-        <div class="video">
-            <video src="../static/img/video_inicio.mp4" autoplay muted loop playsinline></video>
+    <main class="ayuda-container">
+        <h1 class="ayuda-titulo">AYUDA</h1>
+        <div class="ayuda-buscador-wrapper">
+            <input type="text" class="ayuda-buscador" placeholder="¿Cómo podemos ayudarte?" />
         </div>
-
-        
     </main>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <p class="{{ category }}">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
+    
+    
 </body>
 <script>
     var hamburger = document.querySelector(".hamburger");

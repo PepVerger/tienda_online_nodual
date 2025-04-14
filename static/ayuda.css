@@ -1,0 +1,35 @@
+.ayuda-container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 450px);
+    text-align: center;
+}
+
+.ayuda-titulo {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+}
+
+.ayuda-buscador-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 1rem;
+}
+
+.ayuda-buscador {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    outline: none;
+    background-color: transparent;
+    border-radius: 0;
+    font-family: inherit;
+}
