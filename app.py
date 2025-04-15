@@ -35,7 +35,9 @@ class Producto(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    categorias = Categoria.query.all()
+    productos = Producto.query.all()
+    return render_template('index.html', categorias=categorias, productos=productos)
 
 @app.route('/cuenta')
 def cuenta():
@@ -100,7 +102,12 @@ def logout():
 def cesta():
     return render_template('cesta.html')
 
+@app.route('/productos', methods=['GET'])
+def productos():
+    productos = Producto.query.all()
+    return render_template('productos.html', productos=productos)
 
+""""
 @app.route("/productos")
 def producto():
     productos = [
@@ -196,6 +203,7 @@ def producto():
     }
 ]
     return render_template('productos.html', productos=productos)
+"""
 
 
 
