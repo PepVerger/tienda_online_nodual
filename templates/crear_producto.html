@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Crear Producto</title></head>
+<body>
+    <h1>Crear Producto</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required><br>
+
+        <label>Descripción:</label>
+        <textarea name="descripcion" required></textarea><br>
+
+        <label>Categoría:</label>
+        <select name="categoria" required>
+            {% for cat in categorias %}
+                <option value="{{ cat.id }}">{{ cat.nombre }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Imagen:</label>
+        <input type="file" name="imagen" accept="image/*"><br>
+
+        <button type="submit">Crear producto</button>
+    </form>
+    <a href="/">Volver</a>
+</body>
+</html>
