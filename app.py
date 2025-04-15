@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 import os
 
+<<<<<<< Updated upstream
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -100,6 +101,104 @@ def cesta():
     return render_template('cesta.html')
 
 
+@app.route("/productos")
+def producto():
+    productos = [
+    {
+        "id": 1,
+        "nombre": "Blazer cruzado estructurado",
+        "descripcion": "Blazer entallado con solapa de pico y manga larga.",
+        "precio": 59.95,
+        "disponibilidad": True,
+        "categoria": "blazers",
+        "imagen": "https://static.zara.net/photos/blazer1.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Camisa popelín básica",
+        "descripcion": "Camisa clásica de algodón en popelín suave.",
+        "precio": 25.95,
+        "disponibilidad": True,
+        "categoria": "camisas",
+        "imagen": "/static/img/camisa zara.PNG"
+    },
+    {
+        "id": 3,
+        "nombre": "Pantalón wide leg tiro alto",
+        "descripcion": "Pantalón de tiro alto y pierna ancha, estilo fluido.",
+        "precio": 35.95,
+        "disponibilidad": True,
+        "categoria": "pantalones",
+        "imagen": "https://static.zara.net/photos/pantalon1.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Vestido midi estampado floral",
+        "descripcion": "Vestido midi con estampado floral, escote en V.",
+        "precio": 45.95,
+        "disponibilidad": False,
+        "categoria": "vestidos",
+        "imagen": "https://static.zara.net/photos/vestido1.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Cazadora efecto piel",
+        "descripcion": "Chaqueta estilo biker de imitación piel.",
+        "precio": 49.95,
+        "disponibilidad": True,
+        "categoria": "chaquetas",
+        "imagen": "https://static.zara.net/photos/cazadora1.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Falda mini denim",
+        "descripcion": "Falda corta de tejido denim con bajo desflecado.",
+        "precio": 29.95,
+        "disponibilidad": True,
+        "categoria": "faldas",
+        "imagen": "https://static.zara.net/photos/falda1.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Sudadera oversize bordado",
+        "descripcion": "Sudadera de corte amplio con detalles bordados.",
+        "precio": 39.95,
+        "disponibilidad": True,
+        "categoria": "sudaderas",
+        "imagen": "https://static.zara.net/photos/sudadera1.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Top asimétrico canalé",
+        "descripcion": "Top ajustado de canalé con un solo hombro.",
+        "precio": 19.95,
+        "disponibilidad": True,
+        "categoria": "tops",
+        "imagen": "https://static.zara.net/photos/top1.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Abrigo largo lana",
+        "descripcion": "Abrigo de paño largo con cierre cruzado.",
+        "precio": 89.95,
+        "disponibilidad": False,
+        "categoria": "abrigos",
+        "imagen": "https://static.zara.net/photos/abrigo1.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Mono largo escote halter",
+        "descripcion": "Mono elegante largo con escote halter y espalda descubierta.",
+        "precio": 69.95,
+        "disponibilidad": True,
+        "categoria": "monos",
+        "imagen": "https://static.zara.net/photos/mono1.jpg"
+    }
+]
+    return render_template('productos.html', productos=productos)
+
+
+
 @app.route('/crear-categoria', methods=['GET', 'POST'])
 def crear_categoria():
     if request.method == 'POST':
@@ -156,3 +255,10 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+<<<<<<< HEAD
+
+=======
+=======
+
+>>>>>>> Stashed changes
+>>>>>>> f1c972877ca1ca8dcc361afd43de177429bdc536
