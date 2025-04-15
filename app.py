@@ -89,7 +89,9 @@ def logout():
 def cesta():
     return render_template('cesta.html')
 
-productos = [
+@app.route("/productos")
+def producto():
+    productos = [
     {
         "id": 1,
         "nombre": "Blazer cruzado estructurado",
@@ -106,7 +108,7 @@ productos = [
         "precio": 25.95,
         "disponibilidad": True,
         "categoria": "camisas",
-        "imagen": "https://static.zara.net/photos/camisa1.jpg"
+        "imagen": "/static/img/camisa zara.PNG"
     },
     {
         "id": 3,
@@ -181,6 +183,8 @@ productos = [
         "imagen": "https://static.zara.net/photos/mono1.jpg"
     }
 ]
+    return render_template('productos.html', productos=productos)
+
 
 if __name__ == '__main__':
     with app.app_context():
