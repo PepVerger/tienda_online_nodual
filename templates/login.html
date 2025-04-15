@@ -10,6 +10,16 @@
     <title>ZARA</title>
 </head>
 <body>
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
+    
     <header class="header">
         <div class="menu-icon">
             <button class="hamburger hamburger--slider" type="button">
@@ -21,33 +31,36 @@
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
             <a href="#">BUSCAR</a>
-            <a href="{{ url_for('login') }}">INICIAR SESIÓN</a>
+            <a href="{{ url_for('loginselect') }}" class="active">INICIAR SESIÓN</a>
             <a href="#">AYUDA</a>
-            <a href="#">CESTA[0]</a>
+            <a href="{{ url_for('cesta') }}">CESTA[0]</a>
         </nav>
     </header>
 
-    <div class="menu-left">
-        <div class="menu-left-inside">
-            <ul class="menu-list">
-                <li><a href="">MUJER</a></li>
-                <li><a href="">HOMBRE</a></li>
-                <li><a href="">NIÑOS</a></li>
-            </ul>
-        </div>
-    </div>
-    
-    <main class="content">
-        <section class="info">
-            <h2>DISFRUTA LA MEJOR EXPERIENCIA</h2>
-            <p>Identifícate para disfrutar de una experiencia personalizada y acceder a todos nuestros servicios.</p>
-            <button class="black-btn">INICIAR SESIÓN</button>
-            <button class="white-btn">REGÍSTRATE</button>
-        </section>
-        <section class="imagen-login">
-            <img src="static/img/img iniciozara.jpg">
-        </section>
-    </main>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Iniciar Sesión</title>
+    </head>
+    <body>
+        <h2>Iniciar Sesión</h2>
+        <form method="POST">
+            <input type="email" name="email" placeholder="Correo" required>
+            
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <a href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
 </body>
 <script>
     var hamburger = document.querySelector(".hamburger");
