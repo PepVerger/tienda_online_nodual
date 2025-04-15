@@ -94,3 +94,7 @@ a.redirect:hover{
     box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
     letter-spacing: 0.4px;
 }
+
+section.productos{
+    width: 75%;
+}

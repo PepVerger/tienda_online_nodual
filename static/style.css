@@ -183,3 +183,19 @@ a.active{
     text-decoration: underline;
     text-underline-offset: 5px;
 }
+
+hr{
+    width: 80%;
+    border: 2px solid black;
+}
+
+section.productos{
+    width: 75%;
+    display: flex;
+    margin: auto;
+}
+
+h2{
+    letter-spacing: 1px;
+    fon
+}

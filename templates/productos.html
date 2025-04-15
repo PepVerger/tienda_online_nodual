@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Todos los Productos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='productos.css') }}">
+</head>
+<body>
+
+    <h2 class="titulo">TODOS LOS PRODUCTOS</h2>
+
+    <div class="filtros">
+        <a href="{{ url_for('productos_por_categoria', categoria='blazers') }}">Blazers</a>
+        <a href="{{ url_for('productos_por_categoria', categoria='camisas') }}">Camisas</a>
+        <a href="{{ url_for('productos_por_categoria', categoria='pantalones') }}">Pantalones</a>
+        <a href="{{ url_for('productos_por_categoria', categoria='vestidos') }}">Vestidos</a>
+        <a href="{{ url_for('productos_por_categoria', categoria='chaquetas') }}">Chaquetas</a>
+    </div>
+
+    <div class="container">
+        {% for producto in productos %}
+            <div class="product-card">
+                <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
+                <div class="product-name">{{ producto.nombre }}</div>
+                <div class="product-price">{{ producto.precio }} EUR</div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
