@@ -10,6 +10,10 @@
         <label>Descripción:</label>
         <textarea name="descripcion" required></textarea><br>
 
+        <label>Precio:</label>
+        <input type="number" step="0.01" name="precio" required>
+
+
         <label>Categoría:</label>
         <select name="categoria" required>
             {% for cat in categorias %}
