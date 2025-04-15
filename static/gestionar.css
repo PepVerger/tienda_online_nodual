@@ -1,0 +1,30 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    width: 80%;
+}
+table {
+
+
+    margin-bottom: 40px;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+form {
+    display: inline;
+}
+h2 {
+    margin-top: 40px;
+}
+button {
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}

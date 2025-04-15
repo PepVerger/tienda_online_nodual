@@ -50,8 +50,10 @@
             <h1>TU CUENTA</h1>
             <h2>CORREO: {{ session.user_email }}</h2>
             <h2>NOMBRE: {{ session.user_name }}</h2>
+            <a href="{{ url_for('gestionar') }}"><button class="white-btn">Gestionar</button></a>
             <a href="{{ url_for('logout') }}"><button class="white-btn">Cerrar Sesión</button></a>
         </div>
+
     </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
