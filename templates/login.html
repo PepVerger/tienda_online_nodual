@@ -41,9 +41,9 @@
                     <input type="email" name="email" placeholder="CORREO" required> <br>
                     
                     <input type="password" name="password" placeholder="CONTRASEÑA" required> <br>
-                    <button type="submit">Iniciar Sesión</button> 
+                    <button class="white-btn" type="submit">Iniciar Sesión</button> 
                 </form>
-                <a href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
+                <a class="redirect" href="{{ url_for('register') }}">¿No tienes cuenta? Regístrate</a>
         
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
@@ -63,14 +63,6 @@
 
 
 </body>
-<script>
-    var hamburger = document.querySelector(".hamburger");
-    var menu = document.querySelector(".menu-left")
-    hamburger.addEventListener("click", function() {
-      hamburger.classList.toggle("is-active");
-      menu.classList.toggle("open")
 
-    });
-</script>
 
 </html>
