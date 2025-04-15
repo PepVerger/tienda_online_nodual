@@ -228,7 +228,7 @@ def crear_producto():
     if request.method == 'POST':
         nombre = request.form['nombre']
         descripcion = request.form['descripcion']
-        categoria_id = request.form['categoria']
+        categoria_id = int(request.form['categoria'])
         imagen = request.files['imagen']
 
         if imagen:
@@ -262,4 +262,6 @@ if __name__ == '__main__':
         os.makedirs('static/imgs/')
     with app.app_context():
         db.create_all()
+
     app.run(debug=True)
+
