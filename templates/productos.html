@@ -9,13 +9,7 @@
 
     <h2 class="titulo">TODOS LOS PRODUCTOS</h2>
 
-    <div class="filtros">
-        <a href="{{ url_for('productos_por_categoria', categoria='blazers') }}">Blazers</a>
-        <a href="{{ url_for('productos_por_categoria', categoria='camisas') }}">Camisas</a>
-        <a href="{{ url_for('productos_por_categoria', categoria='pantalones') }}">Pantalones</a>
-        <a href="{{ url_for('productos_por_categoria', categoria='vestidos') }}">Vestidos</a>
-        <a href="{{ url_for('productos_por_categoria', categoria='chaquetas') }}">Chaquetas</a>
-    </div>
+
 
     <div class="container">
         {% for producto in productos %}

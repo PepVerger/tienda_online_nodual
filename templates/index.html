@@ -16,6 +16,12 @@
                 <li><a href="">HOMBRE</a></li>
                 <li><a href="">NIÑOS</a></li>
             </ul>
+            {% for categoria in categorias %}
+            <div class="product-card">
+                <div class="product-name">{{ categoria.nombre }}</div>
+
+            </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -53,7 +59,17 @@
         
         <hr>
         <section class="productos">
-            <h2>Productos</h2>
+            <h2>Productos</h2> <br>
+
+        <div class="productos-container">
+            {% for producto in productos %}
+                <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
+                <div class="product-name">{{ producto.nombre }}</div>
+                <div class="product-price">{{ producto.precio }} EUR</div>
+            
+            {% endfor %}
+        </div>
+
         </section>
     </main>
 

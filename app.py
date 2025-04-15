@@ -35,7 +35,9 @@ class Producto(db.Model):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    categorias = Categoria.query.all()
+    productos = Producto.query.all()
+    return render_template('index.html', categorias=categorias, productos=productos)
 
 @app.route('/cuenta')
 def cuenta():
@@ -100,7 +102,12 @@ def logout():
 def cesta():
     return render_template('cesta.html')
 
+@app.route('/productos', methods=['GET'])
+def productos():
+    productos = Producto.query.all()
+    return render_template('productos.html', productos=productos)
 
+""""
 @app.route("/productos")
 def producto():
     productos = [
@@ -196,6 +203,7 @@ def producto():
     }
 ]
     return render_template('productos.html', productos=productos)
+"""
 
 
 
@@ -220,7 +228,7 @@ def crear_producto():
     if request.method == 'POST':
         nombre = request.form['nombre']
         descripcion = request.form['descripcion']
-        categoria_id = request.form['categoria']
+        categoria_id = int(request.form['categoria'])
         imagen = request.files['imagen']
 
         if imagen:
@@ -254,4 +262,6 @@ if __name__ == '__main__':
         os.makedirs('static/imgs/')
     with app.app_context():
         db.create_all()
+
     app.run(debug=True)
+
