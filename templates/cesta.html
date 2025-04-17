@@ -47,9 +47,26 @@
     
     <main class="container">
         <div id="cesta" class="tab-content">
-            <div class="message">TU CESTA ESTÁ VACÍA</div>
-            <div class="info">Los artículos que añadas se mostrarán aquí</div>
+            {% if session.get('cesta') %}
+                <ul class="lista-cesta">
+                    {% for item in session['cesta'] %}
+                        <li class="item-cesta">
+                            <img src="/{{ item.imagen }}" alt="{{ item.nombre }}" width="80">
+                            <div>
+                                <span>{{ item.nombre }}</span><br>
+                                <span>Talla: {{ item.talla }}</span><br>
+                                <span>Precio: {{ item.precio }} EUR</span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="message">TU CESTA ESTÁ VACÍA</div>
+                <div class="info">Los artículos que añadas se mostrarán aquí</div>
+            {% endif %}
         </div>
+        
+        
     
         <div id="favoritos" class="tab-content">
             <div class="message">NO HAY FAVORITOS</div>

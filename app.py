@@ -182,6 +182,35 @@ def eliminar_categoria(categoria_id):
     
     return redirect(url_for('gestionar'))
 
+
+@app.route('/detalle_producto/<int:producto_id>')
+def detalle_producto(producto_id):
+    producto = Producto.query.get_or_404(producto_id)
+    return render_template('detalle_producto.html', producto=producto)
+
+
+@app.route('/agregar-a-cesta/<int:producto_id>', methods=['POST'])
+def agregar_a_cesta(producto_id):
+    talla = request.form.get('talla')
+    producto = Producto.query.get_or_404(producto_id)
+
+    item = {
+        'id': producto.id,
+        'nombre': producto.nombre,
+        'imagen': producto.imagen,
+        'talla': talla
+    }
+
+    if 'cesta' not in session:
+        session['cesta'] = []
+
+    session['cesta'].append(item)
+    session.modified = True
+
+    flash(f'{producto.nombre} (Talla {talla}) agregado a la cesta.', 'success')
+    return redirect(url_for('cesta'))
+
+
 @app.route("/ayuda")
 def ayuda():
     return render_template('ayuda.html')

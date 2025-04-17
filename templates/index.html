@@ -63,6 +63,7 @@
           
             <div class="productos-container">
               {% for producto in productos %}
+              <a href="{{ url_for('detalle_producto', producto_id=producto.id) }}" class="product-link">
                 <div class="product-card">
                   <div class="product-img">
                     <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
@@ -71,6 +72,7 @@
                   <div class="product-price">{{ producto.precio }} EUR</div>
                   <div class="product-descripcion">{{ producto.descripcion }}</div>
                 </div>
+              </a>              
               {% endfor %}
             </div>
           </section>

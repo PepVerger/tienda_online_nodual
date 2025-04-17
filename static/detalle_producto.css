@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.detalle-container {
+    display: flex;
+    padding: 60px;
+    gap: 60px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.detalle-container img {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.detalle-info {
+    max-width: 400px;
+}
+
+.detalle-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.detalle-info .precio {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.detalle-info p {
+    margin-bottom: 20px;
+}
+
+select, button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+
+.detalle-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.producto-imagen {
+    width: 50%;
+    object-fit: cover;
+}
+
+.detalle-info {
+    flex: 1;
+}
+
+.detalle-info h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
