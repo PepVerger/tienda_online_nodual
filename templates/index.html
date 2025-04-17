@@ -58,27 +58,22 @@
         
         <hr>
         <section class="productos">
-            <h2>Productos</h2> <br>
-
-        <div class="productos-container">
-
-
-            {% for producto in productos %}
-
+            <h2>Productos</h2>
+            <br>
+          
+            <div class="productos-container">
+              {% for producto in productos %}
                 <div class="product-card">
-                    <div class="product-img">
-                        <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
-                    </div>
-                    
-                    <div class="product-name">{{ producto.nombre }}</div>
-                    <div class="product-price">{{ producto.precio }} EUR</div>
-
+                  <div class="product-img">
+                    <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
+                  </div>
+                  <div class="product-name">{{ producto.nombre }}</div>
+                  <div class="product-price">{{ producto.precio }} EUR</div>
+                  <div class="product-descripcion">{{ producto.descripcion }}</div>
                 </div>
-            
-            {% endfor %}
-        </div>
-
-        </section>
+              {% endfor %}
+            </div>
+          </section>
     </main>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
