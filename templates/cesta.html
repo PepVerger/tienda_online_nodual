@@ -50,16 +50,28 @@
             {% if session.get('cesta') %}
                 <ul class="lista-cesta">
                     {% for item in session['cesta'] %}
-                        <li class="item-cesta">
-                            <img src="/{{ item.imagen }}" alt="{{ item.nombre }}" width="80">
-                            <div>
-                                <span>{{ item.nombre }}</span><br>
-                                <span>Talla: {{ item.talla }}</span><br>
-                                <span>Precio: {{ item.precio }} EUR</span>
-                            </div>
-                        </li>
+                    <li class="item-cesta">
+                        <img src="/{{ item.imagen }}" alt="{{ item.nombre }}" width="80">
+                        <div>
+                            <span>{{ item.nombre }}</span><br>
+                            <span>Talla: {{ item.talla }}</span><br>
+                            <span>Precio: {{ item.precio }} €</span>
+                        </div>
+                    
+                        <form method="POST" action="{{ url_for('eliminar_producto_cesta') }}">
+                            <input type="hidden" name="id" value="{{ loop.index0 }}">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </li>                    
                     {% endfor %}
                 </ul>
+                
+
+
+                <form method="POST" action="{{ url_for('comprar') }}">
+                    <button class="boton-comprar" type="submit">Comprar</button>
+                </form> 
+
             {% else %}
                 <div class="message">TU CESTA ESTÁ VACÍA</div>
                 <div class="info">Los artículos que añadas se mostrarán aquí</div>
