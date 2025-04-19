@@ -232,6 +232,43 @@ def agregar_a_cesta(producto_id):
     flash(f'{producto.nombre} (Talla {talla}) agregado a la cesta.', 'success')
     return redirect(url_for('cesta'))
 
+@app.route('/agregar-a-favoritos/<int:producto_id>', methods=['POST'])
+def agregar_a_favoritos(producto_id):
+    producto = Producto.query.get_or_404(producto_id)
+
+    item = {
+        'id': producto.id,
+        'nombre': producto.nombre,
+        'imagen': producto.imagen,
+        'precio': producto.precio
+    }
+
+    if 'favoritos' not in session:
+        session['favoritos'] = []
+
+    # Evitar duplicados
+    if not any(fav['id'] == producto.id for fav in session['favoritos']):
+        session['favoritos'].append(item)
+        session.modified = True
+        flash(f'{producto.nombre} agregado a favoritos.', 'success')
+    else:
+        flash('Este producto ya está en favoritos.', 'info')
+
+    return redirect(url_for('detalle_producto', producto_id=producto_id))
+
+
+@app.route('/eliminar-favorito/<int:producto_id>', methods=['POST'])
+def eliminar_favorito(producto_id):
+    favoritos = session.get('favoritos', [])
+    nuevos_favoritos = [item for item in favoritos if item['id'] != producto_id]
+
+    session['favoritos'] = nuevos_favoritos
+    session.modified = True
+
+    flash('Producto eliminado de favoritos.', 'info')
+    return redirect(url_for('cesta'))
+
+
 
 @app.route('/eliminar_producto_cesta', methods=['POST'])
 def eliminar_producto_cesta():
@@ -247,7 +284,6 @@ def eliminar_producto_cesta():
 def comprar():
     session.pop('cesta', None)
     return render_template('cesta.html', mensaje="¡Gracias por su compra!")
-
 
 
 @app.route("/ayuda")
