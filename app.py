@@ -108,6 +108,10 @@ def cesta():
     total = sum(float(p['precio']) for p in productos)
     return render_template('cesta.html', total=total, productos=productos)
 
+@app.route('/favoritos')
+def favoritos():
+    return render_template('favoritos.html')
+
 @app.route('/productos', methods=['GET'])
 def productos():
     productos = Producto.query.all()
@@ -254,7 +258,10 @@ def agregar_a_favoritos(producto_id):
     else:
         flash('Este producto ya está en favoritos.', 'info')
 
-    return redirect(url_for('detalle_producto', producto_id=producto_id))
+    return redirect(url_for('favoritos'))
+
+
+
 
 
 @app.route('/eliminar-favorito/<int:producto_id>', methods=['POST'])
@@ -267,6 +274,28 @@ def eliminar_favorito(producto_id):
 
     flash('Producto eliminado de favoritos.', 'info')
     return redirect(url_for('cesta'))
+
+@app.route('/mover_a_cesta/<int:producto_id>', methods=['POST'])
+def mover_a_cesta(producto_id):
+    producto = next((item for item in session['favoritos'] if item['id'] == producto_id), None)
+    
+    if producto:
+        # Eliminar de favoritos
+        session['favoritos'] = [item for item in session['favoritos'] if item['id'] != producto_id]
+        
+        # Agregar a la cesta
+        if 'cesta' not in session:
+            session['cesta'] = []
+        
+        # Añadir el producto a la cesta
+        session['cesta'].append(producto)
+        session.modified = True
+        flash(f'{producto["nombre"]} ha sido añadido a la cesta.', 'success')
+    else:
+        flash('Producto no encontrado en favoritos.', 'error')
+    
+    return redirect(url_for('favoritos'))
+
 
 
 

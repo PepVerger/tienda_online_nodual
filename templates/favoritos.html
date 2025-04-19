@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/cesta.css">
+    <link href="../static/dist/hamburgers.css" rel="stylesheet">
+    <title>Favoritos - ZARA</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="menu-icon">
+            <button class="hamburger hamburger--slider" type="button">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+
+        <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar..." id="search">
+        </div>
+    </header>
+
+    <div class="menu-left">
+        <div class="menu-left-inside">
+            <ul class="menu-list">
+                <li><a href="">MUJER</a></li>
+                <li><a href="">HOMBRE</a></li>
+                <li><a href="">NIÑOS</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <nav class="menu-options">
+        <a href="/cesta" class="tab active">CESTA</a>
+        <a href="#favoritos" class="tab">FAVORITOS</a>
+    </nav>
+
+    <main class="container">
+        {% if session.get('favoritos') %}
+            <ul class="lista-cesta">
+                {% for item in session['favoritos'] %}
+                    <li class="item-cesta">
+                        <img src="/{{ item.imagen }}" alt="{{ item.nombre }}" width="80">
+                        <div>
+                            <span>{{ item.nombre }}</span><br>
+                            <span>Precio: {{ item.precio }} EUR</span>
+                            
+                            <!-- Botón para quitar de favoritos -->
+                            <form action="{{ url_for('eliminar_favorito', producto_id=item.id) }}" method="POST" style="margin-top: 10px;">
+                                <button type="submit">Quitar de favoritos</button>
+                            </form>
+    
+                            <!-- Botón para añadir a la cesta -->
+                            <form action="{{ url_for('mover_a_cesta', producto_id=item.id) }}" method="POST" style="margin-top: 10px;">
+                                <button type="submit">Añadir a la cesta</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="favoritos-vacio" style="text-align: center; padding: 40px;">
+                <div class="message">NO HAY FAVORITOS</div>
+                <div class="info">Los artículos que marques como favoritos aparecerán aquí</div>
+            </div>
+        {% endif %}
+    </main>    
+    
+
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    var menu = document.querySelector(".menu-left");
+    hamburger.addEventListener("click", function() {
+        hamburger.classList.toggle("is-active");
+        menu.classList.toggle("open");
+    });
+</script>
+
+</body>
+</html>
