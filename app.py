@@ -217,6 +217,7 @@ def agregar_a_cesta(producto_id):
         'id': producto.id,
         'nombre': producto.nombre,
         'imagen': producto.imagen,
+        'precio': producto.precio,
         'talla': talla
     }
 
@@ -228,6 +229,23 @@ def agregar_a_cesta(producto_id):
 
     flash(f'{producto.nombre} (Talla {talla}) agregado a la cesta.', 'success')
     return redirect(url_for('cesta'))
+
+
+@app.route('/eliminar_producto_cesta', methods=['POST'])
+def eliminar_producto_cesta():
+    producto_id = int(request.form['id'])
+    cesta = session.get('cesta', [])
+    if 0 <= producto_id < len(cesta):
+        cesta.pop(producto_id)
+        session['cesta'] = cesta
+    return redirect(url_for('cesta'))
+
+
+@app.route('/comprar', methods=['POST'])
+def comprar():
+    session.pop('cesta', None)
+    return render_template('cesta.html', mensaje="¡Gracias por su compra!")
+
 
 
 @app.route("/ayuda")
