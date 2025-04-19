@@ -104,7 +104,9 @@ def logout():
 
 @app.route("/cesta")
 def cesta():
-    return render_template('cesta.html')
+    productos = session.get('cesta', [])
+    total = sum(float(p['precio']) for p in productos)
+    return render_template('cesta.html', total=total, productos=productos)
 
 @app.route('/productos', methods=['GET'])
 def productos():

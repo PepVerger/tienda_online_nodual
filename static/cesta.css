@@ -139,3 +139,12 @@ body, html {
 .item-cesta img {
     border-radius: 4px;
 }
+
+
+.total-cesta {
+    text-align: left;
+    margin-top: 10px;
+    margin-right: 50px;
+    font-weight: bold;
+    font-size: 16px;
+}
