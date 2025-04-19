@@ -26,6 +26,11 @@
                 </select>
                 <button type="submit">Agregar a la cesta</button>
             </form>
+            
+            <form action="{{ url_for('agregar_a_favoritos', producto_id=producto.id) }}" method="POST">
+                <button type="submit">Agregar a favoritos</button>
+            </form>
+            
         </div>
     </div>
 </body>

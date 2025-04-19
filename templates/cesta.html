@@ -84,9 +84,29 @@
         
     
         <div id="favoritos" class="tab-content">
-            <div class="message">NO HAY FAVORITOS</div>
-            <div class="info">Los artículos que marques como favoritos aparecerán aquí</div>
+            {% if session.get('favoritos') %}
+                <ul class="lista-cesta">
+                    {% for item in session['favoritos'] %}
+                        <li class="item-cesta">
+                            <img src="/{{ item.imagen }}" alt="{{ item.nombre }}" width="80">
+                            <div>
+                                <span>{{ item.nombre }}</span><br>
+                                <span>Precio: {{ item.precio }} EUR</span>
+        
+                                <form action="{{ url_for('eliminar_favorito', producto_id=item.id) }}" method="POST" style="margin-top: 10px;">
+                                    <button type="submit">Quitar de favoritos</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="message">NO HAY FAVORITOS</div>
+                <div class="info">Los artículos que marques como favoritos aparecerán aquí</div>
+            {% endif %}
         </div>
+        
+        
     </main>
 
 </body>
