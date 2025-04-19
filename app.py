@@ -13,6 +13,9 @@ app.config['UPLOAD_FOLDER'] = 'static/imgs/'
 
 db = SQLAlchemy(app)
 
+with app.app_context():
+    db.create_all()
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -29,6 +32,7 @@ class Producto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
     descripcion = db.Column(db.Text, nullable=False)
+    precio = db.Column(db.Float, nullable=False)
     imagen = db.Column(db.String(200))
     categoria_id = db.Column(db.Integer, db.ForeignKey('categoria.id'), nullable=False)
 
@@ -131,8 +135,20 @@ def crear_producto():
         nombre = request.form['nombre']
         descripcion = request.form['descripcion']
         categoria_id = int(request.form['categoria'])
-        imagen = request.files['imagen']
+        precio_str = request.form.get('precio')
 
+        # Validación del precio
+        if not precio_str:
+            flash('El precio es obligatorio.', 'error')
+            return redirect(url_for('crear_producto'))
+        
+        try:
+            precio = float(precio_str)
+        except ValueError:
+            flash('El precio debe ser un número válido.', 'error')
+            return redirect(url_for('crear_producto'))
+
+        imagen = request.files['imagen']
         if imagen:
             filename = secure_filename(imagen.filename)
             ruta_imagen = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -144,6 +160,7 @@ def crear_producto():
         nuevo_producto = Producto(
             nombre=nombre,
             descripcion=descripcion,
+            precio=precio,
             imagen=ruta_guardada,
             categoria_id=categoria_id
         )
@@ -153,6 +170,8 @@ def crear_producto():
         return redirect(url_for('crear_producto'))
 
     return render_template('crear_producto.html', categorias=categorias)
+
+
 @app.route('/gestionar')
 def gestionar():
     productos = Producto.query.all()
