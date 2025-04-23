@@ -54,9 +54,10 @@
                     <li class="item-cesta">
                         <img src="/{{ item.imagen }}" alt="{{ item.nombre }}" width="80">
                         <div>
-                            <span>{{ item.nombre }}</span><br>
+                            <span>{{ item.nombre }} (x{{ item.cantidad }})</span><br>
                             <span>Talla: {{ item.talla }}</span><br>
-                            <span>Precio: {{ item.precio }} €</span>
+                            <span>Precio unidad: {{ item.precio }} €</span><br>
+                            <span>Total: {{ item.precio * item.cantidad }} €</span>
                         </div>
                     
                         <form method="POST" action="{{ url_for('eliminar_producto_cesta') }}">

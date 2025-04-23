@@ -17,13 +17,16 @@
             
             <form action="{{ url_for('agregar_a_cesta', producto_id=producto.id) }}" method="POST">
                 <label for="talla">Talla:</label>
-                <select name="talla" id="talla" required>
+                <select name="talla" required>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
-                    <option value="XL">XL</option>
                 </select>
+            
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" name="cantidad" min="1" max="{{ producto.disponibilidad }}" value="1" required>
+
                 <button type="submit">Agregar a la cesta</button>
             </form>
             

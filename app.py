@@ -35,6 +35,7 @@ class Producto(db.Model):
     precio = db.Column(db.Float, nullable=False)
     imagen = db.Column(db.String(200))
     categoria_id = db.Column(db.Integer, db.ForeignKey('categoria.id'), nullable=False)
+    disponibilidad = db.Column(db.Integer, nullable=False, default=20)
 
 
 @app.route('/')
@@ -213,24 +214,48 @@ def detalle_producto(producto_id):
     producto = Producto.query.get_or_404(producto_id)
     return render_template('detalle_producto.html', producto=producto)
 
-
 @app.route('/agregar-a-cesta/<int:producto_id>', methods=['POST'])
 def agregar_a_cesta(producto_id):
+    producto = Producto.query.get(producto_id)
+    if not producto:
+        flash("Producto no encontrado", "error")
+        return redirect(url_for('index'))
+
     talla = request.form.get('talla')
-    producto = Producto.query.get_or_404(producto_id)
+    cantidad = int(request.form.get('cantidad', 1))
+
+    cantidad_en_cesta = 0
+    if 'cesta' in session:
+        for i in session['cesta']:
+            if i['id'] == producto_id and i['talla'] == talla:
+                cantidad_en_cesta = i['cantidad']
+                break
+
+    if producto.disponibilidad < cantidad_en_cesta + cantidad:
+        flash('Lo sentimos, ya no hay suficiente disponibilidad.', 'error')
+        return redirect(url_for('detalle_producto', producto_id=producto.id))
 
     item = {
         'id': producto.id,
         'nombre': producto.nombre,
-        'imagen': producto.imagen,
+        'talla': talla,
         'precio': producto.precio,
-        'talla': talla
+        'imagen': producto.imagen,
+        'cantidad': cantidad
     }
 
     if 'cesta' not in session:
         session['cesta'] = []
 
-    session['cesta'].append(item)
+    cesta = session['cesta']
+
+    for i in cesta:
+        if i['id'] == producto_id and i['talla'] == talla:
+            i['cantidad'] += cantidad
+            break
+    else:
+        cesta.append(item)
+
     session.modified = True
 
     flash(f'{producto.nombre} (Talla {talla}) agregado a la cesta.', 'success')
