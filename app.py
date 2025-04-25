@@ -41,8 +41,16 @@ class Producto(db.Model):
 @app.route('/')
 def index():
     categorias = Categoria.query.all()
-    productos = Producto.query.all()
-    return render_template('index.html', categorias=categorias, productos=productos)
+    
+    categoria_id = request.args.get('categoria_id', type=int)
+
+    categorias = Categoria.query.all()  # Assuming SQLAlchemy
+    if categoria_id:
+        productos = Producto.query.filter_by(categoria_id=categoria_id).all()
+    else:
+        productos = Producto.query.all()
+
+    return render_template('index.html', categorias=categorias, productos=productos, categoria_id=categoria_id)
 
 @app.route('/cuenta')
 def cuenta():

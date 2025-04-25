@@ -11,13 +11,9 @@
 <body>
     <div class="menu-left">
         <div class="menu-left-inside">
-            <ul class="menu-list">
-                <li><a href="">MUJER</a></li>
-                <li><a href="">HOMBRE</a></li>
-                <li><a href="">NIÑOS</a></li>
-            </ul>
+
             {% for categoria in categorias %}
-                <div>{{ categoria.nombre }}</div>
+                <div class="categoria"><a href="{{ url_for('index', categoria_id=categoria.id) }}">{{ categoria.nombre }}</a></div>
 
 
             {% endfor %}
@@ -58,7 +54,17 @@
         
         <hr>
         <section class="productos">
-            <h2>Productos</h2>
+            <h2>Productos
+
+                {% if categoria_id %}
+                    {% for categoria in categorias %}
+                        {% if categoria.id == categoria_id %}
+                            - <b>({{ categoria.nombre }})</b> - <a class="ver-todo" href="./">Ver Todo</a>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+            </h2>
             <br>
           
             <div class="productos-container">
