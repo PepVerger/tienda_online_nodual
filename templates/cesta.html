@@ -65,7 +65,7 @@
                     
                         <form method="POST" action="{{ url_for('actualizar_cantidad') }}">
                             <input type="hidden" name="id" value="{{ loop.index0 }}">
-                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1">
+                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="0">
                             <button type="submit">Actualizar</button>
                         </form>                        
                     </li>                    

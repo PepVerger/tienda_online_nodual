@@ -269,23 +269,23 @@ def agregar_a_cesta(producto_id):
     flash(f'{producto.nombre} (Talla {talla}) agregado a la cesta.', 'success')
     return redirect(url_for('cesta'))
 
-@app.route('/actualizar-cantidad', methods=['POST'])
+@app.route('/actualizar_cantidad', methods=['POST'])
 def actualizar_cantidad():
-    index = int(request.form.get('id'))
-    nueva_cantidad = int(request.form.get('cantidad', 1))
+    index = int(request.form['id'])
+    cantidad = int(request.form['cantidad'])
 
-    if 'cesta' in session and 0 <= index < len(session['cesta']):
-        producto_id = session['cesta'][index]['id']
-        talla = session['cesta'][index]['talla']
-        producto = Producto.query.get(producto_id)
+    cesta = session.get('cesta', [])
 
-        if producto and producto.disponibilidad >= nueva_cantidad:
-            session['cesta'][index]['cantidad'] = nueva_cantidad
-            flash('Cantidad actualizada.', 'success')
+    if 0 <= index < len(cesta):
+        if cantidad > 0:
+            cesta[index]['cantidad'] = cantidad
         else:
-            flash('No hay suficiente stock para esa cantidad.', 'error')
+            # Si la cantidad es 0, se elimina el producto
+            cesta.pop(index)
 
-    session.modified = True
+        session['cesta'] = cesta
+        session.modified = True
+
     return redirect(url_for('cesta'))
 
 
@@ -314,9 +314,6 @@ def agregar_a_favoritos(producto_id):
     return redirect(url_for('favoritos'))
 
 
-
-
-
 @app.route('/eliminar-favorito/<int:producto_id>', methods=['POST'])
 def eliminar_favorito(producto_id):
     favoritos = session.get('favoritos', [])
@@ -327,39 +324,39 @@ def eliminar_favorito(producto_id):
 
     flash('Producto eliminado de favoritos.', 'info')
     return redirect(url_for('cesta'))
+    
 
-@app.route('/mover_a_cesta/<int:producto_id>', methods=['POST'])
+@app.route('/mover-a-cesta/<int:producto_id>', methods=['POST'])
 def mover_a_cesta(producto_id):
-    producto = next((item for item in session['favoritos'] if item['id'] == producto_id), None)
-    
-    if producto:
-        # Eliminar de favoritos
-        session['favoritos'] = [item for item in session['favoritos'] if item['id'] != producto_id]
-        
-        # Agregar a la cesta
-        if 'cesta' not in session:
-            session['cesta'] = []
-        
-        # Añadir el producto a la cesta
-        session['cesta'].append(producto)
-        session.modified = True
-        flash(f'{producto["nombre"]} ha sido añadido a la cesta.', 'success')
+    producto = Producto.query.get(producto_id)
+    if not producto:
+        return redirect(url_for('favoritos'))
+
+    talla = request.form.get('talla', 'Única')
+    cantidad = int(request.form.get('cantidad', 1))
+
+    item = {
+        'id': producto.id,
+        'nombre': producto.nombre,
+        'talla': talla,
+        'precio': producto.precio,
+        'imagen': producto.imagen,
+        'cantidad': cantidad
+    }
+
+    if 'cesta' not in session:
+        session['cesta'] = []
+
+    for i in session['cesta']:
+        if i['id'] == producto.id and i['talla'] == talla:
+            i['cantidad'] += cantidad
+            break
     else:
-        flash('Producto no encontrado en favoritos.', 'error')
-    
-    return redirect(url_for('favoritos'))
+        session['cesta'].append(item)
 
-
-
-
-@app.route('/eliminar_producto_cesta', methods=['POST'])
-def eliminar_producto_cesta():
-    producto_id = int(request.form['id'])
-    cesta = session.get('cesta', [])
-    if 0 <= producto_id < len(cesta):
-        cesta.pop(producto_id)
-        session['cesta'] = cesta
+    session.modified = True
     return redirect(url_for('cesta'))
+
 
 
 @app.route('/comprar', methods=['POST'])
@@ -379,7 +376,3 @@ if __name__ == '__main__':
         db.create_all()
 
     app.run(debug=True)
-
-
-
-
