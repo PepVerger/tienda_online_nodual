@@ -114,7 +114,7 @@ def logout():
 @app.route("/cesta")
 def cesta():
     productos = session.get('cesta', [])
-    total = sum(float(p['precio']) for p in productos)
+    total = sum(p['precio'] * p['cantidad'] for p in productos)
     return render_template('cesta.html', total=total, productos=productos)
 
 @app.route('/favoritos')
@@ -268,6 +268,26 @@ def agregar_a_cesta(producto_id):
 
     flash(f'{producto.nombre} (Talla {talla}) agregado a la cesta.', 'success')
     return redirect(url_for('cesta'))
+
+@app.route('/actualizar-cantidad', methods=['POST'])
+def actualizar_cantidad():
+    index = int(request.form.get('id'))
+    nueva_cantidad = int(request.form.get('cantidad', 1))
+
+    if 'cesta' in session and 0 <= index < len(session['cesta']):
+        producto_id = session['cesta'][index]['id']
+        talla = session['cesta'][index]['talla']
+        producto = Producto.query.get(producto_id)
+
+        if producto and producto.disponibilidad >= nueva_cantidad:
+            session['cesta'][index]['cantidad'] = nueva_cantidad
+            flash('Cantidad actualizada.', 'success')
+        else:
+            flash('No hay suficiente stock para esa cantidad.', 'error')
+
+    session.modified = True
+    return redirect(url_for('cesta'))
+
 
 @app.route('/agregar-a-favoritos/<int:producto_id>', methods=['POST'])
 def agregar_a_favoritos(producto_id):

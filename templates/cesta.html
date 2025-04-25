@@ -47,6 +47,9 @@
     
     
     <main class="container">
+        {% if mensaje %}
+        <div class="mensaje-compra">{{ mensaje }}</div>
+    {% endif %}
         <div id="cesta" class="tab-content">
             {% if session.get('cesta') %}
                 <ul class="lista-cesta">
@@ -60,10 +63,11 @@
                             <span>Total: {{ item.precio * item.cantidad }} €</span>
                         </div>
                     
-                        <form method="POST" action="{{ url_for('eliminar_producto_cesta') }}">
+                        <form method="POST" action="{{ url_for('actualizar_cantidad') }}">
                             <input type="hidden" name="id" value="{{ loop.index0 }}">
-                            <button type="submit">Eliminar</button>
-                        </form>
+                            <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1">
+                            <button type="submit">Actualizar</button>
+                        </form>                        
                     </li>                    
                     {% endfor %}
                 </ul>
@@ -77,10 +81,13 @@
                     <button class="boton-comprar" type="submit">Comprar</button>
                 </form> 
 
-            {% else %}
-                <div class="message">TU CESTA ESTÁ VACÍA</div>
-                <div class="info">Los artículos que añadas se mostrarán aquí</div>
+                {% else %}
+                {% if not mensaje %}
+                    <div class="message">TU CESTA ESTÁ VACÍA</div>
+                    <div class="info">Los artículos que añadas se mostrarán aquí</div>
+                {% endif %}
             {% endif %}
+            
         </div>
         
         
