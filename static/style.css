@@ -1,5 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
-
+html {
+    scroll-behavior: smooth;
+  }
 body {
     font-family: "Helvetica Neue";
     font-weight: 300;

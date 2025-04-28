@@ -32,7 +32,7 @@
         </div>
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
         <nav class="menu">
-            <a href="#">BUSCAR</a>
+            <a href="./">PRODUCTOS</a>
             {% if session.user_id %}
                 <a href="{{ url_for('cuenta') }}">CUENTA</a>
             {% else %}
@@ -41,7 +41,7 @@
 
             
             <a href="{{ url_for('ayuda') }}">AYUDA</a>
-            <a href="{{ url_for('cesta') }}">CESTA[0]</a>
+            <a href="{{ url_for('cesta') }}">CESTA</a>
         </nav>
     </header>
 

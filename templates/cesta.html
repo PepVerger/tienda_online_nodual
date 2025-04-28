@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/style.css">
+    
     <link rel="stylesheet" href="../static/cesta.css">
+    <link rel="stylesheet" href="../static/style.css">
     <link href="../static/dist/hamburgers.css" rel="stylesheet">
     <title>Cesta- ZARA</title>
 </head>
@@ -18,13 +19,19 @@
                 </span>
             </button>
         </div>
-
         <div class="logo"><a href="./"><img src="../static/img/logo_zara.svg" alt=""></a></div>
+        <nav class="menu">
+            <a href="./">PRODUCTOS</a>
+            {% if session.user_id %}
+                <a href="{{ url_for('cuenta') }}">CUENTA</a>
+            {% else %}
+                <a href="{{ url_for('loginselect') }}">INICIAR SESIÓN</a>
+            {% endif %}
 
-        
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar..." id="search">
-        </div>
+            
+            <a href="{{ url_for('ayuda') }}">AYUDA</a>
+            <a href="{{ url_for('cesta') }}">CESTA</a>
+        </nav>
     </header>
 
     <!-- -------------------------------------------------------
