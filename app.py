@@ -44,7 +44,7 @@ def index():
     
     categoria_id = request.args.get('categoria_id', type=int)
 
-    categorias = Categoria.query.all()  
+    categorias = Categoria.query.all()
     if categoria_id:
         productos = Producto.query.filter_by(categoria_id=categoria_id).all()
     else:
@@ -152,7 +152,7 @@ def crear_producto():
         categoria_id = int(request.form['categoria'])
         precio_str = request.form.get('precio')
 
-        # Validación del precio
+        
         if not precio_str:
             flash('El precio es obligatorio.', 'error')
             return redirect(url_for('crear_producto'))
