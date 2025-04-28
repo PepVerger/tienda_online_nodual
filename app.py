@@ -44,7 +44,7 @@ def index():
     
     categoria_id = request.args.get('categoria_id', type=int)
 
-    categorias = Categoria.query.all()  # Assuming SQLAlchemy
+    categorias = Categoria.query.all()  
     if categoria_id:
         productos = Producto.query.filter_by(categoria_id=categoria_id).all()
     else:
@@ -207,7 +207,7 @@ def eliminar_producto(producto_id):
 def eliminar_categoria(categoria_id):
     categoria = Categoria.query.get_or_404(categoria_id)
     
-    if categoria.productos:  # Asumiendo relación backref desde Producto
+    if categoria.productos:  
         flash('No se puede eliminar una categoría con productos asociados.', 'danger')
     else:
         db.session.delete(categoria)
