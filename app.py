@@ -44,7 +44,7 @@ def index():
     
     categoria_id = request.args.get('categoria_id', type=int)
 
-    categorias = Categoria.query.all()  # Assuming SQLAlchemy
+    categorias = Categoria.query.all()  
     if categoria_id:
         productos = Producto.query.filter_by(categoria_id=categoria_id).all()
     else:
@@ -207,8 +207,8 @@ def eliminar_producto(producto_id):
 def eliminar_categoria(categoria_id):
     categoria = Categoria.query.get_or_404(categoria_id)
     
-    if categoria.productos:  # Asumiendo relación backref desde Producto
-        flash('No se puede eliminar una categoría con productos asociados.', 'danger')
+    if categoria.productos:  
+        flash('No se puede eliminar una categoria con productos asociados.', 'danger')
     else:
         db.session.delete(categoria)
         db.session.commit()
@@ -280,7 +280,7 @@ def actualizar_cantidad():
         if cantidad > 0:
             cesta[index]['cantidad'] = cantidad
         else:
-            # Si la cantidad es 0, se elimina el producto
+            
             cesta.pop(index)
 
         session['cesta'] = cesta
@@ -303,7 +303,7 @@ def agregar_a_favoritos(producto_id):
     if 'favoritos' not in session:
         session['favoritos'] = []
 
-    # Evitar duplicados
+
     if not any(fav['id'] == producto.id for fav in session['favoritos']):
         session['favoritos'].append(item)
         session.modified = True

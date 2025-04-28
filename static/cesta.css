@@ -59,7 +59,7 @@
 }
 
 #cesta:target, #favoritos:target {
-    display: block; /* Muestra solo la que está en la URL */
+    display: block; 
 }
 
 /* Para que por defecto se vea la CESTA */
@@ -71,7 +71,7 @@
 .menu-options a {
     text-decoration: none;
     color: black;
-    font-size: 12px; /* Letras más pequeñas */
+    font-size: 12px; 
     padding: 5px 10px;
     cursor: pointer;
 }
@@ -136,7 +136,6 @@
 }
 
 
-#ania
 .favoritos-vacio {
     display: flex;
     flex-direction: column;
